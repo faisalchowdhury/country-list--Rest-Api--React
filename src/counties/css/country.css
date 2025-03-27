@@ -1,0 +1,21 @@
+
+.country-list {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 20px;
+}
+
+
+.country img {
+    width: 100%;
+    height: 200px;
+}
+
+@media screen and (max-width: 769px){
+    .country-list {
+        
+        grid-template-columns: repeat(2, 1fr);
+        
+     }
+     
+}

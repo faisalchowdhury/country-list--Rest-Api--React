@@ -1,5 +1,6 @@
-
+import { Suspense } from "react";
 import Country from "./country";
+import "./css/country.css"
 
 export default function Countries() {
 
@@ -12,7 +13,11 @@ export default function Countries() {
  
    return (
         <>
-        
+        <div className="country-list">
+        <Suspense fallback="Loading....">
+         <Country fetchData={fetchData}></Country>
+        </Suspense>
+        </div>
         </>
 
     )
