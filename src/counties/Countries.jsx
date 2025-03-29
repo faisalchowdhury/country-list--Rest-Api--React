@@ -1,5 +1,5 @@
 import { Suspense, useState } from "react";
-import Country from "./country";
+import Country from "./Country";
 import "./css/country.css"
 
 export default function Countries() {
@@ -26,16 +26,16 @@ export default function Countries() {
    return (
         <>
         
-          <h1>Visited Country :</h1> 
+          {/* <h1>Visited Country :</h1> 
           { 
             
             country.map((visited , i) => <span key={i}>{visited} ,</span>)
 
-            }   
+          }    */}
         <div className="country-list">
         
         <Suspense fallback="Loading....">
-         <Country fetchData={fetchData} visitedCountrySoFar={visitedCountrySoFar}></Country>
+         <Country fetchData={fetchData} ></Country>
         </Suspense>
         </div>
         </>

@@ -1,5 +1,6 @@
 import { useState } from "react";
-export function Data ({singleData , visitedCountry}){
+
+export function Data ({singleData }){
 
 
      //   Active style
@@ -30,8 +31,8 @@ const handleClick = (id) => {
       setToggle(true)
     }
 
-    // console.log('test')
-    visitedCountry(singleData.name.common,toggle)
+    // // console.log('test')
+    // visitedCountry('dsf')
 }
       return (
         <div className="country">
