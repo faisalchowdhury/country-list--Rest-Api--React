@@ -1,19 +1,31 @@
-import { use } from "react";
+import { use, useState } from "react";
 import { Data } from "./Data";
 
 
-export default function Country({ fetchData }) {
 
+
+
+export default function Country({ fetchData ,visitedCountrySoFar}) {
+    
+
+    const [visited , setVisited] = useState([])
+    const visitedCountry = (name) => {
+      
+        const newVisited = [...visited , name]
+        setVisited(newVisited);
+
+        visitedCountrySoFar(newVisited)
+        // console.log(newVisited)
+        
+    }
+    
     const actualData = use(fetchData);
-           
-   
 
-  
     return (
         <>
 
             {
-                actualData.map((single, i) => <Data key={i} singleData={single} ></Data>)
+                actualData.map((single, i) => <Data key={i} visitedCountry={visitedCountry} singleData={single} ></Data>)
             }
 
         </>

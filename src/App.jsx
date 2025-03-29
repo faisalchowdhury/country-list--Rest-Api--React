@@ -1,6 +1,6 @@
 
 import './App.css'
-import Countries from './counties/countries'
+import Countries from './counties/Countries'
 
 function App() {
  
@@ -8,7 +8,8 @@ function App() {
     <>
       
     <h1>Country List</h1>
-    
+
+       
     <Countries></Countries>
 
     </>
