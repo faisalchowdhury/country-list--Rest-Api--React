@@ -5,21 +5,22 @@ import { Data } from "./Data";
 
 
 
-export default function Country({ fetchData ,visitedCountrySoFar}) {
-    
+export default function Country({ fetchData, visitedCountrySoFar }) {
 
-    const [visited , setVisited] = useState([])
+
+    const [visited, setVisited] = useState([])
     const visitedCountry = (name) => {
-      
-        const newVisited = [...visited , name]
+
+        const newVisited = [...visited, name]
         setVisited(newVisited);
 
         visitedCountrySoFar(newVisited)
         // console.log(newVisited)
-        
+
     }
-    
-    const actualData = use(fetchData);
+
+    // const actualData = use(fetchData);
+    const actualData = fetchData;
 
     return (
         <>

@@ -1,44 +1,41 @@
-import { Suspense, useState } from "react";
-import Country from "./country";
-import "./css/country.css"
+import { useState, useEffect } from "react";
+import Country from "./Country";
+import "./css/country.css";
 
 export default function Countries() {
+  const [countriesData, setCountriesData] = useState(null);
+  const [country, setCountry] = useState([]);
 
-    const fetchCountries = async() => {
-       const fetchData = await fetch('https://restcountries.com/v3.1/all')
-       console.log('test')
-       return fetchData.json();
-       
-    }
-    
-    const fetchData = fetchCountries();
- 
-   
-    const [country, setCountry] =useState([]);
+  useEffect(() => {
+    const fetchCountries = async () => {
+      const response = await fetch("https://restcountries.com/v3.1/all");
+      console.log("test");
+      const data = await response.json();
+      setCountriesData(data);
+    };
 
-   function visitedCountrySoFar(visitedCountry,toggle){
+    fetchCountries();
+  }, []);
+
+  function visitedCountrySoFar(visitedCountry) {
     setCountry(visitedCountry);
-   }
-   
-   
-   console.log(country)
+  }
 
-   return (
-        <>
-        
-          <h1>Visited Country :</h1> 
-          { 
-            
-            country.map((visited , i) => <span key={i}>{visited} ,</span>)
+  console.log(country);
 
-            }   
-        <div className="country-list">
-        
-        <Suspense fallback="Loading....">
-         <Country fetchData={fetchData} visitedCountrySoFar={visitedCountrySoFar}></Country>
-        </Suspense>
-        </div>
-        </>
+  if (!countriesData) {
+    return <div>Loading....</div>;
+  }
 
-    )
+  return (
+    <>
+      <h1>Visited Country :</h1>
+      {country.map((visited, i) => (
+        <span key={i}>{visited}, </span>
+      ))}
+      <div className="country-list">
+        <Country fetchData={countriesData} visitedCountrySoFar={visitedCountrySoFar} />
+      </div>
+    </>
+  );
 }
